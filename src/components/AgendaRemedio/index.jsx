@@ -6,10 +6,10 @@ export default function AgendaRemedio({ enviar }) {
     const [ quatidade, setQuatidade ] = useState("")
 
     function coverterTempo(){
-        let quatidadeSlipt = quatidade.split("")
+        let tempoSplit = tempo.split("")
         let grandezaTempo 
         let medidaConversão
-        quatidadeSlipt.forEach((e) =>{
+        tempoSplit.forEach((e) =>{
             if(e == "H" || e == "h"){
                 grandezaTempo = "h"
                 medidaConversão = 3600000
@@ -22,20 +22,19 @@ export default function AgendaRemedio({ enviar }) {
                 grandezaTempo = "s"
                 medidaConversão = 1000
                 return
-            } else{
-                alert("Insira a medida do tempo")
             }
         })
-        let numeroParaConverter = quatidadeSlipt.filter(letra => letra >= "0" && letra <= "9").join("")
+        let numeroParaConverter = tempoSplit.filter(letra => letra >= "0" && letra <= "9").join("")
         let tempoEmMs = numeroParaConverter * medidaConversão
         return tempoEmMs
     }
-
+    
     function Agendar(){
         if(nome == "" ||  quatidade == "" || tempo == ""){
             alert("insira algo")
             return
         }
+        console.log(coverterTempo())
         const novoAgendamento = {
             nome: nome,
             quatidade: quatidade,
