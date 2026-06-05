@@ -5,15 +5,57 @@ export default function AgendaRemedio({ enviar }) {
     const [ tempo, setTempo ] = useState("")
     const [ quatidade, setQuatidade ] = useState("")
 
+    function coverterTempo(){
+        let quatidadeSlipt = quatidade.split("")
+        let grandezaTempo 
+        let medidaConversão
+        quatidadeSlipt.forEach((e) =>{
+            if(e == "H" || e == "h"){
+                grandezaTempo = "h"
+                medidaConversão = 3600000
+                return
+            } else if(e == "M" || e == "m"){
+                grandezaTempo = "m"
+                medidaConversão = 60000
+                return
+            } else if(e == "S" || e == "s"){
+                grandezaTempo = "s"
+                medidaConversão = 1000
+                return
+            } else{
+                alert("Insira a medida do tempo")
+            }
+        })
+        let numeroParaConverter = quatidadeSlipt.filter(letra => letra >= "0" && letra <= "9").join("")
+        let tempoEmMs = numeroParaConverter * medidaConversão
+        return tempoEmMs
+    }
+
+    function Agendar(){
+        if(nome == "" ||  quatidade == "" || tempo == ""){
+            alert("insira algo")
+            return
+        }
+        const novoAgendamento = {
+            nome: nome,
+            quatidade: quatidade,
+            tempoRestante: coverterTempo()
+        }
+        enviar(itensAnteriores => [...itensAnteriores, novoAgendamento])
+        setNome("")
+        setQuatidade("")
+        setTempo("")
+    }
+
     return(
         <>
         <label htmlFor="">Nome do Remedio</label>
-        <input type="text" id="" />
+        <input type="text" id="" value={nome} onChange={e => setNome(e.target.value)}/>
         <label htmlFor="">De em quanto, quanto tempo</label>
-        <input type="text" id="" />
+        <input type="text" id="" value={tempo} onChange={e => setTempo(e.target.value)}/>
         <label htmlFor="">Quantidade</label>
-        <input type="text" id="" />
-        <button>Agendar</button>
+        <input type="text" id="" value={quatidade} onChange={e => setQuatidade(e.target.value)}/>
+        <button onClick={Agendar}>Agendar</button>
         </>
     )
 }
