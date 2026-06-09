@@ -1,0 +1,15 @@
+.visorRemedios {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 50%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: none;
+}
+
+.remedio{
+    gap: 10px;
+}
+
