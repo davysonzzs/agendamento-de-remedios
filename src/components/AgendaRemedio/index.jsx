@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./style.css"
 
 export default function AgendaRemedio({ enviar }) {
     const [ nome, setNome ] = useState("")
@@ -47,13 +48,15 @@ export default function AgendaRemedio({ enviar }) {
 
     return(
         <>
-        <label htmlFor="">Nome do Remedio</label>
-        <input type="text" id="" value={nome} onChange={e => setNome(e.target.value)}/>
-        <label htmlFor="">De em quanto, quanto tempo</label>
-        <input type="text" id="" value={tempo} onChange={e => setTempo(e.target.value)}/>
-        <label htmlFor="">Quantidade</label>
-        <input type="text" id="" value={quatidade} onChange={e => setQuatidade(e.target.value)}/>
-        <button onClick={Agendar}>Agendar</button>
+        <div className="remedioInfo">
+            <label>Nome do Remedio</label>
+            <input type="text" id="" value={nome} onChange={e => setNome(e.target.value)}/>
+            <label>intervalo de doses</label>
+            <input type="text" id="" value={tempo} onChange={e => setTempo(e.target.value)}/>
+            <label>Quantidade</label>
+            <input type="text" id="" value={quatidade} onChange={e => setQuatidade(e.target.value)}/>
+            <button onClick={Agendar}>Agendar</button>
+        </div>
         </>
     )
 }

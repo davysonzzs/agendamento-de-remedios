@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import AgendaRemedio from "./components/AgendaRemedio"
 import VisorDeRemedios from "./components/VisorDeRemedios"
+import Remedio from "./assets/remedio.png"
+import "./styles/app.css"
 
 export default function App() {
   const [ remedios, setRemedios ] = useState([])
@@ -16,15 +18,21 @@ export default function App() {
   }, [])
   
   return(
-    <div>
-      <h1> Agendamento de Remedios</h1>
-      <h2> Ajudamos na sua rotina de medicações </h2>
-      <div>
-        <AgendaRemedio enviar={setRemedios}/>
+    <div className="container">
+      <div className="remedios">
+        <h2> Ajudamos na sua rotina de medicações </h2>
+        <div className="remediosPainel">
+        <div className="nomeLogo">
+          <img src={Remedio}/>
+          <h1>FarmaCon</h1>
+        </div>
+          <AgendaRemedio enviar={setRemedios} />
+        </div>
       </div>
-      <div>
-        <VisorDeRemedios remediosAgendados={remedios} deletar={deletar}/>
-      </div>
+        <div className="listaRemedios">
+          <h2>Lista de Remedios</h2>
+          <VisorDeRemedios remediosAgendados={remedios} deletar={deletar}/>
+        </div>
     </div>
   )
 }

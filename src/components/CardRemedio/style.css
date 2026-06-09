@@ -1,0 +1,53 @@
+.cardRemedio{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 1px black solid;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    width: 350px;
+
+    transition: all 0.3s ease;
+}
+
+.cardRemedio:hover{
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.cardRemedio button{
+    background: none;
+    margin: 5px;
+    border: 1px #8c0000 solid;
+    font-size: 18px;
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: 0.3s;
+}
+
+.cardRemedio button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.nomeRemedio h1{
+    font-size: 30px;
+    margin: 5px;
+    color: #8c0000;
+    text-align: center;
+}
+
+.nomeRemedio hr{
+    border: none;
+    height: 1px;
+    background-color: #705a44;
+}
+
+.remediosInfos{
+    font-size: 20px;
+    color: #4e2802;
+}
