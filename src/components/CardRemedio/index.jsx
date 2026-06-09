@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import "./style.css"
 
 export default function CardRemedio({ nome, quantidade, tempoRestante }) {
     const [ tempo, setTempo ] = useState(tempoRestante)
@@ -50,10 +51,15 @@ export default function CardRemedio({ nome, quantidade, tempoRestante }) {
         return `${String(horas).padStart(2, "0")}:${String(minutos).padStart(2, "0")}:${String(segundos).padStart(2, "0")}`
     }
     return(
-        <div>
-            <h1>{nome}</h1>
-            <p><span>{quantidade}</span></p>
-            <p><span>{formataTempo(tempo)}</span></p>
+        <div className="cardRemedio">
+            <div className="nomeRemedio">
+                <h1>{nome}</h1>
+            <hr/>
+            </div>
+            <div className="remediosInfos">
+                <p><span>{quantidade}</span></p>
+                <p><span>{formataTempo(tempo)}</span></p>
+            </div>
             <button onClick={() => setAtivo(!pause)}>{pause ? "pausar" : "iniciar"}</button>
         </div>
     )
