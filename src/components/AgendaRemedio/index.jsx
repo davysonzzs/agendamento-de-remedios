@@ -34,7 +34,6 @@ export default function AgendaRemedio({ enviar }) {
             alert("insira algo")
             return
         }
-        console.log(coverterTempo())
         const novoAgendamento = {
             nome: nome,
             quatidade: quatidade,

@@ -4,6 +4,11 @@ import VisorDeRemedios from "./components/VisorDeRemedios"
 
 export default function App() {
   const [ remedios, setRemedios ] = useState([])
+  function deletar(id){
+    const novosRemedios = remedios.filter((_, index) => index !== id)
+    setRemedios(novosRemedios)
+  }
+
   useEffect(() => {
     if ("Notification" in window && Notification.permission === "default") {
       Notification.requestPermission()
@@ -18,7 +23,7 @@ export default function App() {
         <AgendaRemedio enviar={setRemedios}/>
       </div>
       <div>
-        <VisorDeRemedios remediosAgendados={remedios}/>
+        <VisorDeRemedios remediosAgendados={remedios} deletar={deletar}/>
       </div>
     </div>
   )

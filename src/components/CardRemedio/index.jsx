@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export default function CardRemedio({ nome, quantidade, tempoRestante }) {
+export default function CardRemedio({ nome, quantidade, tempoRestante, deletar, index }) {
     const [ tempo, setTempo ] = useState(tempoRestante)
     const [ pause, setAtivo ] = useState(false)
     const dispararNotificacao = () => {
@@ -30,6 +30,10 @@ export default function CardRemedio({ nome, quantidade, tempoRestante }) {
                     if(tempoAtual <= 1000){
                         setAtivo(false)
                         dispararNotificacao()
+                        let res = prompt("Você tomou? 'digite S'").toLowerCase()
+                        if(res == "s"){
+                            setTempo(tempoRestante)
+                        }
                         return 0
                     }
                     return tempoAtual - 1000
@@ -55,6 +59,7 @@ export default function CardRemedio({ nome, quantidade, tempoRestante }) {
             <p><span>{quantidade}</span></p>
             <p><span>{formataTempo(tempo)}</span></p>
             <button onClick={() => setAtivo(!pause)}>{pause ? "pausar" : "iniciar"}</button>
+            <button onClick={() => deletar(index)}>Excluir</button>
         </div>
     )
 }
